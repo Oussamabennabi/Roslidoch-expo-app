@@ -8,36 +8,17 @@ import Space from "../ui/Space";
 import ErrorChip from "../ui/ErrorChip";
 import Button from "../ui/Button";
 import { useState } from "react";
-import { useSignIn } from "@clerk/clerk-expo";
+
 import Toast from "react-native-toast-message";
 import { getToastOptions } from "@/utils/getToastOptions";
-import { getErrorMessageFromClerkCode } from "@/utils/getErrorMessageFromClerkCode";
+
 import { ActivityIndicator } from "react-native";
 import { EmailInput, PasswordInput } from "../form-inputs";
 
 const SignInForm = () => {
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
-  const { signIn, setActive, isLoaded } = useSignIn();
   const handleSubmit = async (values: { email: string; password: string }) => {
-    if (!isLoaded) {
-      return;
-    }
-
-    try {
-      const completeSignIn = await signIn.create({
-        identifier: values.email,
-        password: values.password,
-      });
-      await setActive({ session: completeSignIn.createdSessionId });
-    } catch (err: any) {
-      Toast.show(
-        getToastOptions({
-          message1: getErrorMessageFromClerkCode(err.errors[0].code),
-          type: "error",
-        })
-      );
-      console.error(JSON.stringify(err, null, 2));
-    }
+    
   };
   return (
     <>

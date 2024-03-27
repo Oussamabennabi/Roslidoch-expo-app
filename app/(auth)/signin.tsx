@@ -6,7 +6,7 @@ import Typography from "@/components/ui/Typography";
 import Space from "@/components/ui/Space";
 import Button from "@/components/ui/Button";
 import OrSeporator from "@/components/ui/OrSeporator";
-import SocialButtons from "@/components/(auth)/social-buttons";
+
 import i18n from "@/config/i18n";
 
 import { router } from "expo-router";
@@ -26,7 +26,7 @@ const SignIn = () => {
         <SignInForm />
         <OrSeporator />
         <Space space="xl" />
-        <SocialButtons />
+        
         <Space space="xl" />
 
         <View

@@ -1,10 +1,9 @@
 import React from "react";
-import { TouchableOpacity, View } from "react-native";
+import {  View } from "react-native";
 
 import { SPACING } from "@/constants/Spacing";
 import { COLOR_SHADES } from "@/constants/Colors";
 import Typography from "@/components/ui/Typography";
-import { Entypo } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import BackArrow from "../ui/BackArrow";

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Dimensions, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Dimensions, StyleSheet } from "react-native";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import Typography from "../ui/Typography";
 import { router } from "expo-router";

@@ -1,19 +1,15 @@
 import React, { useCallback } from "react";
 import { Alert,  View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { COLOR_SHADES } from "@/constants/Colors";
 import Space from "@/components/ui/Space";
 import Typography from "@/components/ui/Typography";
 import ListItem from "@/components/settings/ListItem";
 import { CustomSwitch } from "@/components/ui/CustomSwitch";
-import { useAuth } from "@clerk/clerk-expo";
-import { router } from "expo-router";
 import { useTheme } from "@/providers/theme-color-provider";
 import { ScrollView } from "@/components/Themed";
 
 const Settings = () => {
-  const { isLoaded, signOut } = useAuth();
 
   const { toggleTheme, colors, dark } = useTheme();
 
@@ -33,8 +29,6 @@ const Settings = () => {
           {
             text: "Signout",
             onPress: async () => {
-              if (!isLoaded) return;
-              await signOut();
             },
           },
         ],
@@ -56,7 +50,7 @@ const Settings = () => {
             <Space />
 
             <ListItem
-              onPress={() => router.push("/profile-setup")}
+              onPress={() => {}}
               item={{
                 label: "Personal Info",
                 icon: (

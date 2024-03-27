@@ -11,7 +11,7 @@ type ThemeContextType = {
   toggleTheme: () => void;
 };
 
-const THEME_KEY = "midflow.theme";
+const THEME_KEY = "roslidoch.theme";
 
 const themeStorage = {
   async getTheme() {

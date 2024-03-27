@@ -1,4 +1,4 @@
-import { useSignUp } from "@clerk/clerk-expo";
+
 import { Formik } from "formik";
 import React, { useState } from "react";
 import { View } from "../Themed";
@@ -12,21 +12,18 @@ import ErrorChip from "../ui/ErrorChip";
 import Button from "../ui/Button";
 import Toast from "react-native-toast-message";
 import { getToastOptions } from "@/utils/getToastOptions";
-import { getErrorMessageFromClerkCode } from "@/utils/getErrorMessageFromClerkCode";
 import { router } from "expo-router";
 import { ActivityIndicator } from "react-native";
 import {
   ConfirmPasswordInput,
   EmailInput,
   FirstName,
-  GenderInput,
   LastName,
   PasswordInput,
 } from "../form-inputs";
 
 const SignUpForm = () => {
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
-  const { signUp, setActive } = useSignUp();
 
   const handleSubmit = async (values: {
     email: string;
@@ -36,30 +33,7 @@ const SignUpForm = () => {
     lastName: string;
     gender: string;
   }) => {
-    if (!signUp) return;
-    try {
-      await signUp.create({
-        firstName: values.firstName,
-        lastName: values.lastName,
-        gender: values.gender,
-        emailAddress: values.email,
-        password: values.password,
-      });
-
-      // send the email.
-      await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
-
-      // verify email to get code
-      router.push("/verify-email");
-    } catch (err: any) {
-      console.error(JSON.stringify(err, null, 2));
-      Toast.show(
-        getToastOptions({
-          message1: getErrorMessageFromClerkCode(err.errors[0].code),
-          type: "error",
-        })
-      );
-    }
+    
   };
   return (
     <>
@@ -136,16 +110,7 @@ const SignUpForm = () => {
               )}
             </>
 
-            {/* gender */}
-            <>
-              <GenderInput handleChange={handleChange} value={values.gender} />
-              {touched.gender && errors.gender && (
-                <>
-                  <Space />
-                  <ErrorChip text={errors.gender} />
-                </>
-              )}
-            </>
+           
 
             {/* email */}
             <>

@@ -1,5 +1,4 @@
 import BackArrow from "@/components/ui/BackArrow";
-import Typography from "@/components/ui/Typography";
 import { FONT } from "@/constants/Fonts";
 import { useTheme } from "@/providers/theme-color-provider";
 import { router } from "expo-router";
@@ -12,9 +11,6 @@ const Layout = () => {
   return (
     <Stack
       screenOptions={{
-        // header(props) {
-        //   return <NativeSt {...props}></NativeSt>
-        // },
         headerStyle: {
           backgroundColor: colors.secondary_bg,
         },

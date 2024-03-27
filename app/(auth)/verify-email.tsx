@@ -3,36 +3,16 @@ import { ScrollView, View } from "@/components/Themed";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import i18n from "@/config/i18n";
-import { getErrorMessageFromClerkCode } from "@/utils/getErrorMessageFromClerkCode";
 import { getToastOptions } from "@/utils/getToastOptions";
-import { useSignUp } from "@clerk/clerk-expo";
 import OTPInputView from "@twotalltotems/react-native-otp-input";
 import Stack from "expo-router/stack";
 import { useState } from "react";
 import Toast from "react-native-toast-message";
 
 const VerifyEmail = () => {
-  const { isLoaded, signUp, setActive } = useSignUp();
   const [value, setValue] = useState("");
   const onVerify = async () => {
-    if (!isLoaded) {
-      return;
-    }
-
-    try {
-      const completeSignUp = await signUp.attemptEmailAddressVerification({
-        code: value,
-      });
-      await setActive({ session: completeSignUp.createdSessionId });
-    } catch (err: any) {
-      console.error(JSON.stringify(err, null, 2));
-      Toast.show(
-        getToastOptions({
-          message1: getErrorMessageFromClerkCode(err.errors[0].code),
-          type: "error",
-        })
-      );
-    }
+  
   };
   return (
     <>

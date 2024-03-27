@@ -1,5 +1,5 @@
 import React from "react";
-import WelcomeSvg from "@/assets/WelcomeSvg";
+
 import LogoSvg from "@/assets/LogoSvg";
 import { COLOR_SHADES } from "@/constants/Colors";
 import Typography from "@/components/ui/Typography";
@@ -43,12 +43,11 @@ const Welcome = () => {
           style={{ color: COLOR_SHADES.blue.primary }}
         />
       </View>
-
-      <WelcomeSvg />
+      
       <View style={{ position: "absolute", bottom: 30, left: 70, right: 70,backgroundColor:"transparent" }}>
         <Button
           iconRight={<AntDesign name="swapright" size={24} color="white" />}
-          onPress={() => router.push("/onboarding")}
+          onPress={() => {}}
           label="Continue"
           style={{ width: "100%" }}
         />
